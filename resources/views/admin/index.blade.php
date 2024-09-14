@@ -1,18 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Admin</h1>
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
 
-        <input type="submit" value="Logout">
-       
-    </form>
-</body>
+<!DOCTYPE html>
+<html>
+  <head> 
+    @include('admin.css')
+  </head>
+  <body>
+
+   <!-- start Header-->
+   @include('admin.header')
+   <!-- end Header-->
+
+  
+
+   
+      <!-- Sidebar Navigation-->
+     @include('admin.sidebar')
+      <!-- Sidebar Navigation end-->
+
+      <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+
+            @include('admin.body')
+            </div>
+          </div>
+        </section>
+        <footer class="footer">
+          <div class="footer__block block no-margin-bottom">
+            <div class="container-fluid text-center">
+              <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+               <p class="no-margin-bottom">2018 &copy; Your company. Download From <a target="_blank" href="https://templateshub.net">Templates Hub</a>.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="{{asset('admincss/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('admincss/vendor/popper.js/umd/popper.min.js')}}"> </script>
+    <script src="{{asset('admincss/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('admincss/vendor/jquery.cookie/jquery.cookie.js')}}"> </script>
+    <script src="{{asset('admincss/vendor/chart.js/Chart.min.js')}}"></script>
+    <script src="{{asset('admincss/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('admincss/js/charts-home.js')}}"></script>
+    <script src="{{asset('admincss/js/front.js')}}"></script>
+  </body>
 </html>
