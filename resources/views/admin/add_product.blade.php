@@ -62,7 +62,8 @@
                 </div>
                 <div class="input_deg">
                     <label for="">Description</label>
-                    <textarea name="description" required></textarea>
+                    <textarea id="description" name="description" required></textarea>
+                    {{-- <textarea name="description" required></textarea> --}}
                 </div>
                 <div class="input_deg">
                     <label for="">Price</label>
