@@ -1,15 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Models\Category;
+use App\Models\Product;
 // use Flasher\Toastr\Prime\Toastr;
 use Flasher\Prime\FlasherInterface;
-use SweetAlert;
-
-
 
 class AdminController extends Controller
 {
@@ -61,8 +57,41 @@ class AdminController extends Controller
         $data = Category::find($id);
         $data->category_name = $request->category;
         $data->save();
-        toastr()->success('Your Category has been Updated successfully.');
+        toastr()->success('Your Category has been Updated SSuccessfully.');
         return redirect('/view_category');
+    }
+    
+    public function add_product()
+    {
+        $category = Category::all();
+        return view('admin.add_product',compact('category'));
+    }
+    public function upload_product(Request $request)
+    {
+       $data = new Product;
+
+       $data->title = $request->title;
+       $data->description = $request->description;
+       $data->price = $request->price;
+       $data->quantity = $request->qty;
+       $data->category = $request->category;
+
+       $image = $request->image;
+
+       if($image)
+       {
+           $imagename = time().'.'.$image->getClientOriginalExtension();
+           $request->image->move('products', $imagename);
+
+           $data->image = $imagename;
+       }
+
+
+       $data->save();
+
+       toastr()->success('Your Product has been Uploaded successfully');
+       return redirect()->back();
+
     }
 }
 
